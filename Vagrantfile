@@ -9,8 +9,8 @@ Vagrant.configure("2") do |config|
         machine.vm.box =  "generic/centos8"
         
         machine.ssh.insert_key = false
-        machine.vm.provision "file", source: "./id_rsa.pub", destination: "~/.ssh/authorized_keys"
-        machine.ssh.private_key_path = ["./id_rsa", "~/.vagrant.d/insecure_private_key"]
+        machine.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/authorized_keys"
+        machine.ssh.private_key_path = ["~/.ssh/id_rsa", "~/.vagrant.d/insecure_private_key"]
         machine.vm.hostname = "machine#{machine_id}"
 
         machine.vm.provider "parallels" do |prl|
