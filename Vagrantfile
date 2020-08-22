@@ -17,6 +17,7 @@ Vagrant.configure("2") do |config|
           prl.cpus = "1"
           prl.memory = "512"
           prl.update_guest_tools = true
+          prl.customize ["set", :id, "--hypervisor-type", "apple"]
         end
 
         machine.vm.provision "shell", inline: "yum update -y"
