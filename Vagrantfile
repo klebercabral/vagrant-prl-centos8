@@ -12,6 +12,7 @@ Vagrant.configure("2") do |config|
         machine.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/authorized_keys"
         machine.ssh.private_key_path = ["~/.ssh/id_rsa", "~/.vagrant.d/insecure_private_key"]
         machine.vm.hostname = "machine#{machine_id}"
+	      machine.vm.network "forwarded_port", guest: 22, host: "222#{machine_id}"
 
         machine.vm.provider "parallels" do |prl|
           prl.cpus = "1"
